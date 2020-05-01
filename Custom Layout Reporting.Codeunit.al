@@ -137,11 +137,11 @@ codeunit 70201 "Red Custom Layout Reporting"
         is.Read(Body);
 
         if Body = '' then
-            Body := 'This is an automagically created email. Please do not respond';
+            Body := 'This is an automagically created email. Please do not respond'; // ToDo -> remove
 
         TempPDF.Blob.CreateInStream(is);
 
-        MailSent := DocumentMailing.EmailFileFromStream(is, AttachmentName, Body, DocumentMailing.GetEmailSubject('', AttachmentName, CustomReportSelection.Usage), CustomReportSelection.GetSendToEmail(true), true, CustomReportSelection.Usage);
+        MailSent := DocumentMailing.EmailFileFromStream(is, AttachmentName, Body, DocumentMailing.GetEmailSubject('', AttachmentName, CustomReportSelection.Usage.AsInteger()), CustomReportSelection.GetSendToEmail(true), true, CustomReportSelection.Usage.AsInteger());
 
         if not MailSent then
             ClearLastError();
@@ -179,6 +179,7 @@ codeunit 70201 "Red Custom Layout Reporting"
         ReportLayoutSelection: Record "Report Layout Selection";
     begin
         // ToDo -> this is the main issue...
+
         exit('');
     end;
 
