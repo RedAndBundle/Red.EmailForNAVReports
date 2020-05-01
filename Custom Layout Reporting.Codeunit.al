@@ -11,16 +11,14 @@ codeunit 70201 "Red Custom Layout Reporting"
         var AnyOutputExists: Boolean
     ): Boolean
     begin
-        case OutputType of
-            OutputType::Email:
-                if CustomReportSelection.GetSendToEmail(true) = '' then
-                    exit(false)
-                else
-                    EmailReport(DataRecRef, ReportID, CustomReportSelection, TempBlobIndicesNameValueBuffer, TempBlobList);
-            else
+        case false of
+            OutputType = OutputType::Email,
+            CustomReportSelection."Red Alt Email Layout Code" = '',
+            CustomReportSelection.GetSendToEmail(true) = '':
                 exit(false);
         end;
 
+        EmailReport(DataRecRef, ReportID, CustomReportSelection, TempBlobIndicesNameValueBuffer, TempBlobList);
         AnyOutputExists := true;
         exit(true);
     end;
@@ -42,7 +40,7 @@ codeunit 70201 "Red Custom Layout Reporting"
         CustomReportLayoutCode := ResolveCustomReportLayoutCode(CustomReportSelection);
         ReportLayoutSelection.SetTempLayoutSelected(CustomReportLayoutCode);
 
-        CreateReportWithExtension(DataRecRef, ReportID, REPORTFORMAT::Pdf, TempPDF, TempBlobIndicesNameValueBuffer, TempBlobList);
+        CreateReportWithExtension(DataRecRef, ReportID, ReportID, REPORTFORMAT::Pdf, TempPDF, TempBlobIndicesNameValueBuffer, TempBlobList);
         if not TempPDF.Blob.HasValue then
             exit;
 
@@ -55,17 +53,17 @@ codeunit 70201 "Red Custom Layout Reporting"
         GetKeyFieldRef(DataRecRef, FieldRef1);
         GetNameFieldRef(DataRecRef, FieldRef2);
 
-        // EmailBodyLayoutCode := ResolveEmailBodyLayoutCode(CustomReportSelection);
+        EmailBodyLayoutCode := ResolveEmailBodyLayoutCode(CustomReportSelection);
 
-        // if EmailBodyLayoutCode <> '' then begin
-        //     ReportLayoutSelection.SetTempLayoutSelected(EmailBodyLayoutCode);
-        //     ReportRecordVariant := DataRecRef;
-        //     BindSubscription(MailManagement);
-        //     CreateReportWithExtension(ReportRecordVariant, ReportID, REPORTFORMAT::Html, TempHTML, TempBlobIndicesNameValueBuffer, TempBlobList);
-        //     if not TempHTML.Blob.HasValue then
-        //         exit;
-        //     UnbindSubscription(MailManagement);
-        // end;
+        if EmailBodyLayoutCode <> '' then begin
+            ReportLayoutSelection.SetTempLayoutSelected(EmailBodyLayoutCode);
+            ReportRecordVariant := DataRecRef;
+            BindSubscription(MailManagement);
+            CreateReportWithExtension(ReportRecordVariant, CustomReportSelection."Red Alt Email Report ID", ReportID, REPORTFORMAT::Html, TempHTML, TempBlobIndicesNameValueBuffer, TempBlobList);
+            if not TempHTML.Blob.HasValue then
+                exit;
+            UnbindSubscription(MailManagement);
+        end;
 
         ReportLayoutSelection.SetTempLayoutSelected('');
 
@@ -104,9 +102,10 @@ codeunit 70201 "Red Custom Layout Reporting"
         end;
     end;
 
-    local procedure CreateReportWithExtension(var DataRecRef: RecordRef; ReportID: Integer; ReportFormatType: ReportFormat; var tempBlob: Record "ForNAV Core Setup"; var TempBlobIndicesNameValueBuffer: Record "Name/Value Buffer" temporary; var TempBlobList: Codeunit "Temp Blob List"): Text[250]
+    local procedure CreateReportWithExtension(var DataRecRef: RecordRef; ReportID: Integer; MasterReportId: Integer; ReportFormatType: ReportFormat; var tempBlob: Record "ForNAV Core Setup"; var TempBlobIndicesNameValueBuffer: Record "Name/Value Buffer" temporary; var TempBlobList: Codeunit "Temp Blob List"): Text[250]
     var
         CustomLayoutReporting: Codeunit "Custom Layout Reporting";
+        ReportManagement: Codeunit "ForNAV Report Management";
         os: OutStream;
     begin
         BindSubscription(CustomLayoutReporting);
@@ -114,15 +113,16 @@ codeunit 70201 "Red Custom Layout Reporting"
             REPORTFORMAT::Pdf:
                 begin
                     tempBlob.Blob.CreateOutStream(os);
-                    CustomLayoutReporting.CallReportSaveAs(ReportID, GetRequestParametersText(TempBlobIndicesNameValueBuffer, TempBlobList, ReportID), REPORTFORMAT::Pdf, os, DataRecRef);
+                    CustomLayoutReporting.CallReportSaveAs(ReportID, GetRequestParametersText(TempBlobIndicesNameValueBuffer, TempBlobList, MasterReportId), REPORTFORMAT::Pdf, os, DataRecRef);
                 end;
             REPORTFORMAT::Html:
                 begin
 
                     tempBlob.Blob.CreateOutStream(os);
-                    CustomLayoutReporting.CallReportSaveAs(ReportID, GetRequestParametersText(TempBlobIndicesNameValueBuffer, TempBlobList, ReportID), REPORTFORMAT::Html, os, DataRecRef);
+                    CustomLayoutReporting.CallReportSaveAs(ReportID, GetRequestParametersText(TempBlobIndicesNameValueBuffer, TempBlobList, MasterReportId), REPORTFORMAT::Html, os, DataRecRef);
                 end;
         end;
+
     end;
 
     [TryFunction]
@@ -130,18 +130,15 @@ codeunit 70201 "Red Custom Layout Reporting"
     var
         DocumentMailing: Codeunit "Document-Mailing";
         MailSent: Boolean;
-        is: InStream;
+        AttIs: InStream;
+        BodyIs: InStream;
         Body: Text;
     begin
-        TempHTML.Blob.CreateInStream(is);
-        is.Read(Body);
+        TempHTML.Blob.CreateInStream(BodyIs);
 
-        if Body = '' then
-            Body := 'This is an automagically created email. Please do not respond'; // ToDo -> remove
+        TempPDF.Blob.CreateInStream(AttIs);
 
-        TempPDF.Blob.CreateInStream(is);
-
-        MailSent := DocumentMailing.EmailFileFromStream(is, AttachmentName, Body, DocumentMailing.GetEmailSubject('', AttachmentName, CustomReportSelection.Usage.AsInteger()), CustomReportSelection.GetSendToEmail(true), true, CustomReportSelection.Usage.AsInteger());
+        MailSent := DocumentMailing.EmailFileAndHtmlFromStream(AttIs, AttachmentName, BodyIs, CustomReportSelection.GetSendToEmail(true), DocumentMailing.GetEmailSubject('', AttachmentName, CustomReportSelection.Usage.AsInteger()), true, CustomReportSelection.Usage.AsInteger());
 
         if not MailSent then
             ClearLastError();
@@ -178,9 +175,7 @@ codeunit 70201 "Red Custom Layout Reporting"
     var
         ReportLayoutSelection: Record "Report Layout Selection";
     begin
-        // ToDo -> this is the main issue...
-
-        exit('');
+        exit(CustomReportSelection."Red Alt Email Layout Code");
     end;
 
     local procedure GetRequestParametersText(var TempBlobIndicesNameValueBuffer: Record "Name/Value Buffer" temporary; var TempBlobList: Codeunit "Temp Blob List"; ReportID: Integer): Text
