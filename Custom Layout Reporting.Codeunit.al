@@ -11,8 +11,8 @@ codeunit 70201 "Red Custom Layout Reporting"
         var AnyOutputExists: Boolean
     ): Boolean
     begin
-        case false of
-            OutputType = OutputType::Email,
+        case true of
+            OutputType <> OutputType::Email,
             CustomReportSelection."Red Alt Email Layout Code" = '',
             CustomReportSelection.GetSendToEmail(true) = '':
                 exit(false);
