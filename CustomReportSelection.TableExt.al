@@ -1,4 +1,8 @@
 tableextension 70200 RedCustomReportSelection extends "Custom Report Selection"
+// Copyright (c) 2020 ForNAV ApS - All Rights Reserved
+// The intellectual work and technical concepts contained in this file are proprietary to ForNAV.
+// Unauthorized reverse engineering, distribution or copying of this file, parts hereof, or derived work, via any medium is strictly prohibited without written permission from ForNAV ApS.
+// This source code is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 {
     fields
     {
@@ -12,9 +16,6 @@ tableextension 70200 RedCustomReportSelection extends "Custom Report Selection"
             var
                 ReportManagement: Codeunit "ForNAV Report Management";
             begin
-                if ReportManagement.IsForNAVReport("Red Alt Email Report ID") then
-                    Error(CannotBeForNAVReportErr, FieldCaption("Red Alt Email Report ID"));
-
                 CalcFields("Red Alt Email Report Caption");
                 if ("Red Alt Email Report ID" = 0) or ("Red Alt Email Report ID" <> xRec."Red Alt Email Report ID") then begin
                     Validate("Red Alt Email Layout Code", '');
@@ -23,8 +24,7 @@ tableextension 70200 RedCustomReportSelection extends "Custom Report Selection"
         }
         field(70201; "Red Alt Email Report Caption"; Text[250])
         {
-            CalcFormula = Lookup (AllObjWithCaption."Object Caption" where("Object Type" = CONST(Report),
-                                                                           "Object ID" = field("Red Alt Email Report ID")));
+            CalcFormula = Lookup (AllObjWithCaption."Object Caption" where("Object Type" = CONST(Report), "Object ID" = field("Red Alt Email Report ID")));
             Caption = 'Alternative Email Report Caption';
             Editable = false;
             FieldClass = FlowField;
@@ -37,7 +37,7 @@ tableextension 70200 RedCustomReportSelection extends "Custom Report Selection"
             trigger OnValidate()
             begin
                 if "Red Alt Email Layout Code" <> '' then
-                    TestField("Use for Email Body", true);
+                    TestField("Use for Email Body", false);
                 CalcFields("Email Body Layout Description");
             end;
         }

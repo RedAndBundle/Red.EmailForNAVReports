@@ -1,4 +1,8 @@
 codeunit 70200 "Red Custom Layout Report Evnt"
+// Copyright (c) 2020 ForNAV ApS - All Rights Reserved
+// The intellectual work and technical concepts contained in this file are proprietary to ForNAV.
+// Unauthorized reverse engineering, distribution or copying of this file, parts hereof, or derived work, via any medium is strictly prohibited without written permission from ForNAV ApS.
+// This source code is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 {
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Custom Layout Reporting", 'OnBeforeRunReportWithCustomReportSelection', '', false, false)]
     local procedure OnBeforeRunReportWithCustomReportSelection(
@@ -6,8 +10,7 @@ codeunit 70200 "Red Custom Layout Report Evnt"
         var ReportID: Integer;
         var CustomReportSelection: Record "Custom Report Selection";
         var EmailPrintIfEmailIsMissing: Boolean;
-        var TempBlobIndicesNameValueBuffer: Record "Name/Value Buffer" temporary;
-        var TempBlobList: Codeunit "Temp Blob List";
+        var TempBlobReqParamStore: Record TempBlob;
         var OutputType: Option;
         var AnyOutputExists: Boolean;
         var InHandled: Boolean
@@ -18,6 +21,6 @@ codeunit 70200 "Red Custom Layout Report Evnt"
         if InHandled then
             exit;
 
-        InHandled := RedCustomLayoutReporting.RunReportWithCustomReportSelection(DataRecRef, ReportID, CustomReportSelection, EmailPrintIfEmailIsMissing, TempBlobIndicesNameValueBuffer, TempBlobList, OutputType, AnyOutputExists);
+        InHandled := RedCustomLayoutReporting.RunReportWithCustomReportSelection(DataRecRef, ReportID, CustomReportSelection, EmailPrintIfEmailIsMissing, TempBlobReqParamStore, OutputType, AnyOutputExists);
     end;
 }

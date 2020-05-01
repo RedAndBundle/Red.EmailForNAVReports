@@ -2,7 +2,7 @@
   "id": "3f4d94d2-7809-4997-96f8-9245104245c3",
   "name": "RedEmailForNAVReports",
   "publisher": "Red and Bundle",
-  "version": "1.0.0.0",
+  "version": "14.0.0.0",
   "brief": "Use an alternative email body layout for ForNAV reports",
   "description": "",
   "privacyStatement": "",
@@ -12,26 +12,15 @@
   "logo": "",
   "dependencies": [
     {
-      "id": "63ca2fa4-4f03-4f2b-a480-172fef340d3f",
-      "publisher": "Microsoft",
-      "name": "System Application",
-      "version": "16.0.0.0"
-    },
-    {
-      "id": "437dbf0e-84ff-417a-965d-ed2bb9650972",
-      "publisher": "Microsoft",
-      "name": "Base Application",
-      "version": "16.0.0.0"
-    },
-    {
-      "id": "6f0293d3-86fc-4ff8-9632-54a580be6546",
+      "appId": "6f0293d3-86fc-4ff8-9632-54a580be6546",
       "name": "ForNAV Core",
       "publisher": "ForNAV",
       "version": "4.0.0.0"
     }
   ],
   "screenshots": [],
-  "platform": "16.0.0.0",
+  "platform": "14.0.0.0",
+  "application": "14.0.0.0",
   "idRanges": [
     {
       "from": 70200,
@@ -40,5 +29,6 @@
   ],
   "contextSensitiveHelpUrl": "https://RedEmailForNAVReports.com/help/",
   "showMyCode": true,
-  "runtime": "5.0"
+  "runtime": "3.0",
+  "target": "Internal"
 }
