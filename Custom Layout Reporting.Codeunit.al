@@ -18,12 +18,11 @@ codeunit 70201 "Red Custom Layout Reporting"
                 exit(false);
         end;
 
-        EmailReport(DataRecRef, ReportID, CustomReportSelection, TempBlobIndicesNameValueBuffer, TempBlobList);
-        AnyOutputExists := true;
+        AnyOutputExists := EmailReport(DataRecRef, ReportID, CustomReportSelection, TempBlobIndicesNameValueBuffer, TempBlobList);
         exit(true);
     end;
 
-    local procedure EmailReport(var DataRecRef: RecordRef; ReportID: Integer; CustomReportSelection: Record "Custom Report Selection"; var TempBlobIndicesNameValueBuffer: Record "Name/Value Buffer" temporary; var TempBlobList: Codeunit "Temp Blob List")
+    local procedure EmailReport(var DataRecRef: RecordRef; ReportID: Integer; CustomReportSelection: Record "Custom Report Selection"; var TempBlobIndicesNameValueBuffer: Record "Name/Value Buffer" temporary; var TempBlobList: Codeunit "Temp Blob List"): Boolean
     var
         ReportLayoutSelection: Record "Report Layout Selection";
         TempPDF: Record "ForNAV Core Setup";
@@ -42,7 +41,7 @@ codeunit 70201 "Red Custom Layout Reporting"
 
         CreateReportWithExtension(DataRecRef, ReportID, ReportID, REPORTFORMAT::Pdf, TempPDF, TempBlobIndicesNameValueBuffer, TempBlobList);
         if not TempPDF.Blob.HasValue then
-            exit;
+            exit(false);
 
         if CustomReportLayout.Get(CustomReportLayoutCode) then;
         AttachmentName := GenerateAttachmentNameForReport('pdf', CustomReportLayout.Description, DataRecRef);
@@ -61,13 +60,13 @@ codeunit 70201 "Red Custom Layout Reporting"
             BindSubscription(MailManagement);
             CreateReportWithExtension(ReportRecordVariant, CustomReportSelection."Red Alt Email Report ID", ReportID, REPORTFORMAT::Html, TempHTML, TempBlobIndicesNameValueBuffer, TempBlobList);
             if not TempHTML.Blob.HasValue then
-                exit;
+                exit(false);
             UnbindSubscription(MailManagement);
         end;
 
         ReportLayoutSelection.SetTempLayoutSelected('');
 
-        TryEmailReport(TempPDF, TempHTML, CustomReportSelection, FieldRef2, AttachmentName);
+        exit(TryEmailReport(TempPDF, TempHTML, CustomReportSelection, FieldRef2, AttachmentName));
     end;
 
     local procedure GetKeyFieldRef(var TableRecordRef: RecordRef; var KeyFieldRef: FieldRef): Boolean
