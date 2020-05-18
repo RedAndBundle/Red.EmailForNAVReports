@@ -1,0 +1,115 @@
+OBJECT Codeunit 50000 Red Alternative Mail Body
+{
+  OBJECT-PROPERTIES
+  {
+    Date=18-05-20;
+    Time=12:15:02;
+    Version List=Red14.0;
+  }
+  PROPERTIES
+  {
+    OnRun=BEGIN
+          END;
+
+  }
+  CODE
+  {
+
+    [EventSubscriber(Table,77,OnBeforeGetEmailBodyCustomer)]
+    [LineStart(2)]
+    LOCAL PROCEDURE OnBeforeGetEmailBodyCustomer@2(ReportUsage@1000 : Integer;RecordVariant@1001 : Variant;VAR TempBodyReportSelections@1002 : Record 77;CustNo@1003 : Code[20];VAR CustEmailAddress@1004 : Text;VAR EmailBodyText@1005 : Text);
+    BEGIN
+      GetAlternativeEmailBodyLayout(ReportUsage, RecordVariant, TempBodyReportSelections, CustNo, CustEmailAddress, EmailBodyText);
+    END;
+
+    [EventSubscriber(Table,77,OnFindReportSelections)]
+    [LineStart(5)]
+    LOCAL PROCEDURE OnFindReportSelections@3(VAR Sender@1000 : Record 77;VAR FilterReportSelections@1001 : Record 77;VAR IsHandled@1002 : Boolean;VAR ReturnReportSelections@1003 : Record 77);
+    BEGIN
+      IF IsHandled THEN
+          EXIT;
+
+      IsHandled := HasAlternativeEmailLayout(FilterReportSelections);
+    END;
+
+    [LineStart(11)]
+    LOCAL PROCEDURE GetAlternativeEmailBodyLayout@1(ReportUsage@1005 : Integer;RecordVariant@1004 : Variant;VAR TempBodyReportSelections@1003 : Record 77;CustNo@1002 : Code[20];VAR CustEmailAddress@1001 : Text;VAR EmailBodyText@1000 : Text) : Boolean;
+    BEGIN
+      IF GetCustomReportSelection(TempBodyReportSelections, ReportUsage, CustNo, DATABASE::Customer) THEN
+          EXIT(TRUE);
+
+      IF GetReportSelections(TempBodyReportSelections, ReportUsage) THEN
+          EXIT(TRUE);
+    END;
+
+    [LineStart(18)]
+    LOCAL PROCEDURE GetCustomReportSelection@4(VAR TempBodyReportSelections@1001 : Record 77;ReportUsage@1000 : Integer;AccountNo@1002 : Code[20];TableNo@1003 : Integer) : Boolean;
+    VAR
+      CustomReportSelection@1004 : Record 9657;
+    BEGIN
+      // CustomReportSelection.SetRange(Usage, ReportUsage);
+      // CustomReportSelection.SetRange("Source Type", TableNo);
+      // CustomReportSelection.SetRange("Source No.", AccountNo);
+      // CustomReportSelection.SetFilter("Red Alt Email Layout Code", '<>%1', '');
+      // CustomReportSelection.SetFilter("Red Alt Email Report ID", '<>0');
+      // if CustomReportSelection.IsEmpty then
+      //     exit(false);
+      //
+      // TempBodyReportSelections.Reset();
+      // TempBodyReportSelections.DeleteAll();
+      // if CustomReportSelection.FindSet then
+      //     repeat
+      //         TempBodyReportSelections.Usage := CustomReportSelection.Usage;
+      //         TempBodyReportSelections.Sequence := Format(CustomReportSelection.Sequence);
+      //         TempBodyReportSelections."Report ID" := CustomReportSelection."Red Alt Email Report ID";
+      //         TempBodyReportSelections."Custom Report Layout Code" := CustomReportSelection."Red Alt Email Layout Code";
+      //         TempBodyReportSelections."Email Body Layout Code" := CustomReportSelection."Red Alt Email Layout Code";
+      //         TempBodyReportSelections."Use for Email Attachment" := false;
+      //         TempBodyReportSelections."Use for Email Body" := true;
+      //         TempBodyReportSelections."Red Alt Email Report ID" := CustomReportSelection."Red Alt Email Report ID";
+      //         TempBodyReportSelections."Red Alt Email Layout Code" := CustomReportSelection."Red Alt Email Layout Code";
+      //         TempBodyReportSelections.Insert();
+      //     until CustomReportSelection.Next() = 0;
+      //
+      // exit(not TempBodyReportSelections.IsEmpty());
+    END;
+
+    [LineStart(45)]
+    LOCAL PROCEDURE GetReportSelections@5(VAR TempBodyReportSelections@1000 : Record 77;ReportUsage@1001 : Integer) : Boolean;
+    VAR
+      ReportSelections@1002 : Record 77;
+    BEGIN
+      TempBodyReportSelections.RESET();
+      TempBodyReportSelections.DELETEALL();
+      WITH ReportSelections DO BEGIN
+          SETRANGE(Usage, ReportUsage);
+          SETFILTER("Red Alt Email Layout Code", '<>%1', '');
+          SETFILTER("Red Alt Email Report ID", '<>0');
+          IF FINDSET THEN
+              REPEAT
+                  TempBodyReportSelections.Usage := ReportSelections.Usage;
+                  TempBodyReportSelections.Sequence := FORMAT(ReportSelections.Sequence);
+                  TempBodyReportSelections."Report ID" := ReportSelections."Red Alt Email Report ID";
+                  TempBodyReportSelections."Custom Report Layout Code" := ReportSelections."Red Alt Email Layout Code";
+                  TempBodyReportSelections."Email Body Layout Code" := ReportSelections."Red Alt Email Layout Code";
+                  TempBodyReportSelections."Use for Email Attachment" := FALSE;
+                  TempBodyReportSelections."Use for Email Body" := TRUE;
+                  TempBodyReportSelections."Red Alt Email Report ID" := ReportSelections."Red Alt Email Report ID";
+                  TempBodyReportSelections."Red Alt Email Layout Code" := ReportSelections."Red Alt Email Layout Code";
+                  TempBodyReportSelections.INSERT();
+              UNTIL NEXT() = 0;
+      END;
+
+      EXIT(NOT TempBodyReportSelections.ISEMPTY());
+    END;
+
+    [LineStart(69)]
+    LOCAL PROCEDURE HasAlternativeEmailLayout@6(VAR TempBodyReportSelections@1000 : Record 77) : Boolean;
+    BEGIN
+    END;
+
+    BEGIN
+    END.
+  }
+}
+
