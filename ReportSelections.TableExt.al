@@ -20,7 +20,7 @@ tableextension 70200 RedCustomReportSelection extends "Custom Report Selection"
                 ReportManagement: Codeunit "ForNAV Report Management";
             begin
                 if ReportManagement.IsForNAVReport("Red Alt Email Report ID") then
-                    Error(CannotBeForNAVReportErr, FieldCaption("Red Alt Email Report ID"));
+                    Error(RedCannotBeForNAVReportErr, FieldCaption("Red Alt Email Report ID"));
 
                 Validate("Use for Email Body", false);
 
@@ -63,12 +63,12 @@ tableextension 70200 RedCustomReportSelection extends "Custom Report Selection"
         if not "Use for Email Body" then
             exit;
         if "Red Alt Email Report ID" <> 0 then
-            Error(CannotBeUsedErr, FieldCaption("Red Alt Email Report ID"), "Red Alt Email Report ID");
+            Error(RedCannotBeUsedErr, FieldCaption("Red Alt Email Report ID"), "Red Alt Email Report ID");
         if "Red Alt Email Layout Code" <> '' then
-            Error(CannotBeUsedErr, FieldCaption("Red Alt Email Layout Desc"), "Red Alt Email Layout Desc");
+            Error(RedCannotBeUsedErr, FieldCaption("Red Alt Email Layout Desc"), "Red Alt Email Layout Desc");
     end;
 
     var
-        CannotBeForNAVReportErr: Label 'The %1 cannot be a ForNAV report';
-        CannotBeUsedErr: Label '%1 cannot be %2';
+        RedCannotBeForNAVReportErr: Label 'The %1 cannot be a ForNAV report';
+        RedCannotBeUsedErr: Label '%1 cannot be %2';
 }
