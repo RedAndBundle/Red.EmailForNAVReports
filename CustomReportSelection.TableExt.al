@@ -17,10 +17,10 @@ tableextension 70201 RedReportSelections extends "Report Selections"
 
             trigger OnValidate()
             var
-                ReportManagement: Codeunit "ForNAV Report Management";
+            // ReportManagement: Codeunit "ForNAV Report Management";
             begin
-                if ReportManagement.IsForNAVReport("Red Alt Email Report ID") then
-                    Error(CannotBeForNAVReportErr, FieldCaption("Red Alt Email Report ID"));
+                // if ReportManagement.IsForNAVReport("Red Alt Email Report ID") then
+                //     Error(CannotBeForNAVReportErr, FieldCaption("Red Alt Email Report ID"));
 
                 Validate("Use for Email Body", false);
                 if ("Red Alt Email Report ID" = 0) or ("Red Alt Email Report ID" <> xRec."Red Alt Email Report ID") then begin
@@ -32,7 +32,7 @@ tableextension 70201 RedReportSelections extends "Report Selections"
         }
         field(70201; "Red Alt Email Report Caption"; Text[250])
         {
-            CalcFormula = Lookup (AllObjWithCaption."Object Caption" where("Object Type" = CONST(Report),
+            CalcFormula = Lookup(AllObjWithCaption."Object Caption" where("Object Type" = CONST(Report),
                                                                            "Object ID" = field("Red Alt Email Report ID")));
             Caption = 'Alternative Email Report Caption';
             Editable = false;
@@ -52,7 +52,7 @@ tableextension 70201 RedReportSelections extends "Report Selections"
         }
         field(70203; "Red Alt Email Layout Desc"; Text[250])
         {
-            CalcFormula = Lookup ("Custom Report Layout".Description where(Code = field("Red Alt Email Layout Code")));
+            CalcFormula = Lookup("Custom Report Layout".Description where(Code = field("Red Alt Email Layout Code")));
             Caption = 'Alternative Email Body Layout Description';
             Editable = false;
             FieldClass = FlowField;

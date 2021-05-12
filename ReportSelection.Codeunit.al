@@ -46,34 +46,30 @@ codeunit 70202 "Red Report Selection"
     begin
         TempBodyReportSelections.Reset();
         TempBodyReportSelections.DeleteAll();
-        with ReportSelections do begin
-            SetRange(Usage, ReportUsage);
-            SetFilter("Red Alt Email Layout Code", '<>%1', '');
-            SetFilter("Red Alt Email Report ID", '<>0');
-            if FindSet then
-                repeat
-                    TempBodyReportSelections.Usage := ReportSelections.Usage;
-                    TempBodyReportSelections.Sequence := Format(ReportSelections.Sequence);
-                    TempBodyReportSelections."Report ID" := ReportSelections."Red Alt Email Report ID";
-                    TempBodyReportSelections."Custom Report Layout Code" := ReportSelections."Red Alt Email Layout Code";
-                    TempBodyReportSelections."Email Body Layout Code" := ReportSelections."Red Alt Email Layout Code";
-                    TempBodyReportSelections."Use for Email Attachment" := false;
-                    TempBodyReportSelections."Use for Email Body" := true;
-                    TempBodyReportSelections."Red Alt Email Report ID" := ReportSelections."Red Alt Email Report ID";
-                    TempBodyReportSelections."Red Alt Email Layout Code" := ReportSelections."Red Alt Email Layout Code";
-                    TempBodyReportSelections.Insert();
-                until Next() = 0;
-        end;
+        ReportSelections.SetRange(Usage, ReportUsage);
+        ReportSelections.SetFilter("Red Alt Email Layout Code", '<>%1', '');
+        ReportSelections.SetFilter("Red Alt Email Report ID", '<>0');
+        if ReportSelections.FindSet() then
+            repeat
+                TempBodyReportSelections.Usage := ReportSelections.Usage;
+                TempBodyReportSelections.Sequence := Format(ReportSelections.Sequence);
+                TempBodyReportSelections."Report ID" := ReportSelections."Red Alt Email Report ID";
+                TempBodyReportSelections."Custom Report Layout Code" := ReportSelections."Red Alt Email Layout Code";
+                TempBodyReportSelections."Email Body Layout Code" := ReportSelections."Red Alt Email Layout Code";
+                TempBodyReportSelections."Use for Email Attachment" := false;
+                TempBodyReportSelections."Use for Email Body" := true;
+                TempBodyReportSelections."Red Alt Email Report ID" := ReportSelections."Red Alt Email Report ID";
+                TempBodyReportSelections."Red Alt Email Layout Code" := ReportSelections."Red Alt Email Layout Code";
+                TempBodyReportSelections.Insert();
+            until ReportSelections.Next() = 0;
 
         exit(not TempBodyReportSelections.IsEmpty());
     end;
 
     procedure HasAlternativeEmailLayout(var TempBodyReportSelections: Record "Report Selections"): Boolean
     begin
-        with TempBodyReportSelections do begin
-            SetFilter("Red Alt Email Layout Code", '<>%1', '');
-            SetFilter("Red Alt Email Report ID", '<>0');
-            exit(not IsEmpty());
-        end;
+        TempBodyReportSelections.SetFilter("Red Alt Email Layout Code", '<>%1', '');
+        TempBodyReportSelections.SetFilter("Red Alt Email Report ID", '<>0');
+        exit(not TempBodyReportSelections.IsEmpty());
     end;
 }

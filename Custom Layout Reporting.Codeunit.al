@@ -25,8 +25,8 @@ codeunit 70201 "Red Custom Layout Reporting"
     local procedure EmailReport(var DataRecRef: RecordRef; ReportID: Integer; CustomReportSelection: Record "Custom Report Selection"; var TempBlobIndicesNameValueBuffer: Record "Name/Value Buffer" temporary; var TempBlobList: Codeunit "Temp Blob List"): Boolean
     var
         ReportLayoutSelection: Record "Report Layout Selection";
-        TempPDF: Record "ForNAV Core Setup";
-        TempHTML: Record "ForNAV Core Setup";
+        TempPDF: Record "Red Email Blob";
+        TempHTML: Record "Red Email Blob";
         CustomReportLayout: Record "Custom Report Layout";
         MailManagement: Codeunit "Mail Management";
         FieldRef1: FieldRef;
@@ -101,10 +101,10 @@ codeunit 70201 "Red Custom Layout Reporting"
         end;
     end;
 
-    local procedure CreateReportWithExtension(var DataRecRef: RecordRef; ReportID: Integer; MasterReportId: Integer; ReportFormatType: ReportFormat; var tempBlob: Record "ForNAV Core Setup"; var TempBlobIndicesNameValueBuffer: Record "Name/Value Buffer" temporary; var TempBlobList: Codeunit "Temp Blob List"): Text[250]
+    local procedure CreateReportWithExtension(var DataRecRef: RecordRef; ReportID: Integer; MasterReportId: Integer; ReportFormatType: ReportFormat; var tempBlob: Record "Red Email Blob"; var TempBlobIndicesNameValueBuffer: Record "Name/Value Buffer" temporary; var TempBlobList: Codeunit "Temp Blob List"): Text[250]
     var
         CustomLayoutReporting: Codeunit "Custom Layout Reporting";
-        ReportManagement: Codeunit "ForNAV Report Management";
+        // ReportManagement: Codeunit "ForNAV Report Management";
         os: OutStream;
     begin
         BindSubscription(CustomLayoutReporting);
@@ -125,7 +125,7 @@ codeunit 70201 "Red Custom Layout Reporting"
     end;
 
     [TryFunction]
-    local procedure TryEmailReport(var TempPDF: Record "ForNAV Core Setup"; var TempHTML: Record "ForNAV Core Setup"; var CustomReportSelection: Record "Custom Report Selection"; var FieldRef2: FieldRef; AttachmentName: Text)
+    local procedure TryEmailReport(var TempPDF: Record "Red Email Blob"; var TempHTML: Record "Red Email Blob"; var CustomReportSelection: Record "Custom Report Selection"; var FieldRef2: FieldRef; AttachmentName: Text)
     var
         DocumentMailing: Codeunit "Document-Mailing";
         MailSent: Boolean;
