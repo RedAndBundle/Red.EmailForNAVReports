@@ -2,14 +2,14 @@
   "id": "3f4d94d2-7809-4997-96f8-9245104245c3",
   "name": "RedEmailForNAVReports",
   "publisher": "Red and Bundle",
-  "version": "16.0.0.0",
+  "version": "18.0.0.0",
   "brief": "Use an alternative email body layout for ForNAV reports",
   "description": "",
-  "privacyStatement": "",
-  "EULA": "",
-  "help": "",
-  "url": "",
-  "logo": "",
+  "privacyStatement": "https://redandbundle.com/privacy/",
+  "EULA": "https://raw.githubusercontent.com/RedAndBundle/Red.EmailForNAVReports/master/LICENSE",
+  "help": "https://redandbundle.com/contact-2/",
+  "url": "https://redandbundle.com/",
+  "logo": "images/RedBundleLogo.png",
   "dependencies": [
   ],
   "screenshots": [],
@@ -21,7 +21,7 @@
       "to": 70249
     }
   ],
-  "contextSensitiveHelpUrl": "https://RedEmailForNAVReports.com/help/",
+  "contextSensitiveHelpUrl": "https://redandbundle.com/contact-2/",
   "showMyCode": true,
   "runtime": "5.0"
 }
