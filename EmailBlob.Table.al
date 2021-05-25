@@ -1,6 +1,7 @@
 table 70200 "Red Email Blob"
 {
     DataClassification = SystemMetadata;
+    TableType = Temporary;
 
     fields
     {

@@ -4,27 +4,27 @@ pageextension 70201 "Red Report Selections" extends "Report Selection - Sales"
     {
         addlast(Control1)
         {
-            field("Email Body Layout Type"; "Email Body Layout Type")
+            field("Email Body Layout Type"; Rec."Email Body Layout Type")
             {
                 ApplicationArea = Basic, Suite;
             }
-            field("Red Alt Email Report ID"; "Red Alt Email Report ID")
+            field("Red Alt Email Report ID"; Rec."Red Alt Email Report ID")
             {
                 ApplicationArea = Basic, Suite;
                 ToolTip = 'Specifies the ID of the report used for the email body.';
             }
-            field("Red Alt Email Report Caption"; "Red Alt Email Report Caption")
+            field("Red Alt Email Report Caption"; Rec."Red Alt Email Report Caption")
             {
                 ApplicationArea = Basic, Suite;
                 ToolTip = 'Specifies the name of the report used for the email body.';
             }
-            field("Red Alt Email Layout Code"; "Red Alt Email Layout Code")
+            field("Red Alt Email Layout Code"; Rec."Red Alt Email Layout Code")
             {
                 ApplicationArea = Basic, Suite;
                 ToolTip = 'Specifies the ID of the email body layout that is used for the email body.';
                 Visible = false;
             }
-            field("Red Alt Email Layout Desc"; "Red Alt Email Layout Desc")
+            field("Red Alt Email Layout Desc"; Rec."Red Alt Email Layout Desc")
             {
                 ApplicationArea = Basic, Suite;
                 DrillDown = true;
@@ -50,9 +50,9 @@ pageextension 70201 "Red Report Selections" extends "Report Selection - Sales"
     var
         CustomReportLayout: Record "Custom Report Layout";
     begin
-        if CustomReportLayout.LookupLayoutOK("Red Alt Email Report ID") then
-            Validate("Red Alt Email Layout Code", CustomReportLayout.Code)
+        if CustomReportLayout.LookupLayoutOK(Rec."Red Alt Email Report ID") then
+            Rec.Validate("Red Alt Email Layout Code", CustomReportLayout.Code)
         else
-            Validate("Red Alt Email Layout Code", '');
+            Rec.Validate("Red Alt Email Layout Code", '');
     end;
 }
