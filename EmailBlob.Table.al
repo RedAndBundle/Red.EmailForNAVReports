@@ -13,7 +13,7 @@ table 70200 "Red Email Blob"
         }
         field(2; Blob; Blob)
         {
-            Caption = 'Primary Key';
+            Caption = 'Blob';
             DataClassification = SystemMetadata;
         }
     }
