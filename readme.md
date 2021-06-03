@@ -21,3 +21,18 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+
+# Use
+
+Once setup the alternative email body layout will work seamlessly with the Business Central emailing mechanism.
+# Customer Document layouts
+In the Customer Document layouts you can setup the alternative email body per customer.
+
+![Customer Document layouts](.\Images/Setup%20Customer%20Document%20Layouts.png)
+
+
+# Report Selection Sales
+In the Report Selection Sales you can setup the alternative email body for all customers.
+
+![Report Selection Sales](.\Images/Setup%20Report%20Selection%20Sales.png)

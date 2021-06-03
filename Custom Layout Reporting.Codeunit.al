@@ -40,14 +40,12 @@ codeunit 70201 "Red Custom Layout Reporting"
         ReportLayoutSelection.SetTempLayoutSelected(CustomReportLayoutCode);
 
         CreateReportWithExtension(DataRecRef, ReportID, ReportID, REPORTFORMAT::Pdf, TempPDF, TempBlobIndicesNameValueBuffer, TempBlobList);
+        ReportLayoutSelection.SetTempLayoutSelected('');
         if not TempPDF.Blob.HasValue then
             exit(false);
 
         if CustomReportLayout.Get(CustomReportLayoutCode) then;
         AttachmentName := GenerateAttachmentNameForReport('pdf', CustomReportLayout.Description, DataRecRef);
-
-        if CustomReportLayoutCode <> '' then
-            ReportLayoutSelection.SetTempLayoutSelected('');
 
         GetKeyFieldRef(DataRecRef, FieldRef1);
         GetNameFieldRef(DataRecRef, FieldRef2);
@@ -165,6 +163,9 @@ codeunit 70201 "Red Custom Layout Reporting"
             exit(CustomReportSelection."Custom Report Layout Code");
 
         if ReportLayoutSelection.Get(CustomReportSelection."Report ID", CompanyName) then
+            exit(ReportLayoutSelection."Custom Report Layout Code");
+
+        if ReportLayoutSelection.Get(CustomReportSelection."Report ID", '') then
             exit(ReportLayoutSelection."Custom Report Layout Code");
 
         exit('');
