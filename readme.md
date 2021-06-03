@@ -29,10 +29,10 @@ Once setup the alternative email body layout will work seamlessly with the Busin
 # Customer Document layouts
 In the Customer Document layouts you can setup the alternative email body per customer.
 
-![Customer Document layouts](.\Images/Setup%20Customer%20Document%20Layouts.png)
+![Customer Document layouts](https://raw.githubusercontent.com/RedAndBundle/Red.EmailForNAVReports/master/Images/Setup%20Customer%20Document%20Layouts.png)
 
 
 # Report Selection Sales
 In the Report Selection Sales you can setup the alternative email body for all customers.
 
-![Report Selection Sales](.\Images/Setup%20Report%20Selection%20Sales.png)
+![Report Selection Sales](https://raw.githubusercontent.com/RedAndBundle/Red.EmailForNAVReports/master/Images/Setup%20Report%20Selection%20Sales.png)
