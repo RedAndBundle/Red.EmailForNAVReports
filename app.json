@@ -7,7 +7,7 @@
   "description": "",
   "privacyStatement": "https://redandbundle.com/privacy/",
   "EULA": "https://raw.githubusercontent.com/RedAndBundle/Red.EmailForNAVReports/master/LICENSE",
-  "help": "https://redandbundle.com/contact-2/",
+  "help": "https://github.com/RedAndBundle/Red.EmailForNAVReports",
   "url": "https://redandbundle.com/",
   "logo": "images/RedBundleLogo.png",
   "dependencies": [
@@ -21,7 +21,7 @@
       "to": 70249
     }
   ],
-  "contextSensitiveHelpUrl": "https://redandbundle.com/contact-2/",
+  "contextSensitiveHelpUrl": "https://github.com/RedAndBundle/Red.EmailForNAVReports",
   "showMyCode": true,
   "runtime": "6.0",
   "features": ["TranslationFile"]
