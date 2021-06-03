@@ -3,6 +3,9 @@
 Use an alternative email body layout for ForNAV reports.
 
 Once setup the alternative email body layout will work seamlessly with the Business Central emailing mechanism.
+
+# Installation
+The extension can be downloaded from the [GitHub release repository](https://github.com/RedAndBundle/Red.EmailForNAVReports/releases)
 # Customer Document layouts
 In the Customer Document layouts you can setup the alternative email body per customer.
 
