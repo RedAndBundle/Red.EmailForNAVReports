@@ -8,5 +8,5 @@ Invoke-ExportTranslationFromXlfToExcel `
 
 Invoke-ImportTranslationFromExcelToXlf `
     -FromXlf '.\Translations\RedEmailForNAVReports.g.xlf' `
-    -FromExcel '.\Scripts\Translations-Generated.xlsx'`
+    -FromExcel '.\Scripts\Translations.xlsx'`
     -ToXlf '.\Translations'

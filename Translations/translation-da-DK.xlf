@@ -11,132 +11,157 @@
         </trans-unit>
         <trans-unit id="Table 1660547344 - Field 1663593181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Primary Key</source>
-          <target>Primary Key</target>
+          <target>Primærnøgle</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Red Email Blob - Field Primary Key - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 1074820574 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Statement Email Body</source>
+          <target>Kontodtog e-mail skabelon</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Red Statement Email Body - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 1074820574 - NamedType 1908025102" size-unit="char" translate="yes" xml:space="preserve">
           <source>Thank you for your business. Your statement is attached to this message.</source>
+          <target>Tak for din ordre. Dit udtog er vedhæftet denne meddelelse</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Red Statement Email Body - NamedType BodyLbl</note>
         </trans-unit>
         <trans-unit id="Report 1074820574 - NamedType 2771379227" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sincerely</source>
+          <target>Venlig hilsen</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Red Statement Email Body - NamedType ClosingLbl</note>
         </trans-unit>
         <trans-unit id="Report 1074820574 - NamedType 514421613" size-unit="char" translate="yes" xml:space="preserve">
           <source>Hello</source>
+          <target>Hej</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Red Statement Email Body - NamedType GreetingLbl</note>
         </trans-unit>
         <trans-unit id="Report 1074820574 - NamedType 698237251" size-unit="char" translate="yes" xml:space="preserve">
           <source>Statement</source>
+          <target>Kontoudtog</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Red Statement Email Body - NamedType StatementCaptionLbl</note>
         </trans-unit>
         <trans-unit id="PageExtension 3749630742 - Control 3222997843 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3219644059">
           <source>Specifies the ID of the email body layout that is used for the email body.</source>
+          <target>Angiver ID&apos;&apos;et for e-mail skabelon layoutet, der er brugt til e-mail skabelonen.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Red Customer Report Selections - Control Red Alt Email Layout Code - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 3749630742 - Control 2481724167 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3219644059">
           <source>Specifies a description of the email body layout that is used for the email body.</source>
+          <target>Angiver en beskrivelse af e-mail skabelon layoutet, der er brugt til e-mail skabelonen.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Red Customer Report Selections - Control Red Alt Email Layout Desc - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 3749630742 - Control 3744992298 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3219644059">
           <source>Specifies the name of the report used for the email body.</source>
+          <target>Angiver navnet på rapporten brugt til e-mail skabelonen. </target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Red Customer Report Selections - Control Red Alt Email Report Caption - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 3749630742 - Control 2798103039 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3219644059">
           <source>Specifies the ID of the report used for the email body.</source>
+          <target>Angiver ID&apos;&apos;et af rapporten brugt til e-mail skabelonen.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Red Customer Report Selections - Control Red Alt Email Report ID - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 2055499826 - Control 3222997843 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3740874685">
           <source>Specifies the ID of the email body layout that is used for the email body.</source>
+          <target>Angiver ID&apos;&apos;et for e-mail skabelon layoutet, der er brugt til e-mail skabelonen.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Red Report Selections - Control Red Alt Email Layout Code - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 2055499826 - Control 2481724167 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3740874685">
           <source>Specifies a description of the email body layout that is used for the email body.</source>
+          <target>Angiver en beskrivelse af e-mail skabelon layoutet, der er brugt til e-mail skabelonen.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Red Report Selections - Control Red Alt Email Layout Desc - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 2055499826 - Control 3744992298 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3740874685">
           <source>Specifies the name of the report used for the email body.</source>
+          <target>Angiver navnet på rapporten brugt til e-mail skabelonen. </target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Red Report Selections - Control Red Alt Email Report Caption - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 2055499826 - Control 2798103039 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3740874685">
           <source>Specifies the ID of the report used for the email body.</source>
+          <target>Angiver ID&apos;&apos;et af rapporten brugt til e-mail skabelonen.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Red Report Selections - Control Red Alt Email Report ID - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="TableExtension 1157009442 - NamedType 2983046936" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 1157009442">
           <source>The %1 cannot be a ForNAV report</source>
+          <target>1% kan ikke være en ForNAV rapport</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension RedCustomReportSelection - NamedType RedCannotBeForNAVReportErr</note>
         </trans-unit>
         <trans-unit id="TableExtension 1157009442 - NamedType 3914791609" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 1157009442">
           <source>%1 cannot be %2</source>
+          <target>1% kan ikke være 2%</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension RedCustomReportSelection - NamedType RedCannotBeUsedErr</note>
         </trans-unit>
         <trans-unit id="TableExtension 1157009442 - Field 3222997843 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3714646879">
           <source>Alternative Email Layout Code</source>
+          <target>Alternativ e-mail layoutkode</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension RedCustomReportSelection - Field Red Alt Email Layout Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1157009442 - Field 2481724167 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3714646879">
           <source>Alternative Email Body Layout Description</source>
+          <target>Alternativ e-mail skabelon layout beskrivelse</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension RedCustomReportSelection - Field Red Alt Email Layout Desc - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1157009442 - Field 3744992298 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3714646879">
           <source>Alternative Email Report Caption</source>
+          <target>Alternativ billedtekst for e-mail</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension RedCustomReportSelection - Field Red Alt Email Report Caption - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1157009442 - Field 2798103039 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3714646879">
           <source>Alternative Email Report ID</source>
+          <target>Alternativ e-mail rapport ID.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension RedCustomReportSelection - Field Red Alt Email Report ID - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2927344546 - NamedType 1984738169" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 2927344546">
           <source>The %1 cannot be a ForNAV report</source>
+          <target>1% kan ikke være en ForNAV rapport</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension RedReportSelections - NamedType CannotBeForNAVReportErr</note>
         </trans-unit>
         <trans-unit id="TableExtension 2927344546 - NamedType 1037945160" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 2927344546">
           <source>%1 cannot be %2</source>
+          <target>1% kan ikke være 2%</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension RedReportSelections - NamedType CannotBeUsedErr</note>
         </trans-unit>
         <trans-unit id="TableExtension 2927344546 - Field 3222997843 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4046772223">
           <source>Alternative Email Layout Code</source>
+          <target>Alternativ e-mail layoutkode</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension RedReportSelections - Field Red Alt Email Layout Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2927344546 - Field 2481724167 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4046772223">
           <source>Alternative Email Body Layout Description</source>
+          <target>Alternativ e-mail skabelon layout beskrivelse</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension RedReportSelections - Field Red Alt Email Layout Desc - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2927344546 - Field 3744992298 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4046772223">
           <source>Alternative Email Report Caption</source>
+          <target>Alternativ billedtekst for e-mail</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension RedReportSelections - Field Red Alt Email Report Caption - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2927344546 - Field 2798103039 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4046772223">
           <source>Alternative Email Report ID</source>
+          <target>Alternativ e-mail rapport ID.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension RedReportSelections - Field Red Alt Email Report ID - Property Caption</note>
         </trans-unit>
